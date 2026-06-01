@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0e14">
+<title>SZL Anatomy 3D V2 — Human Substrate · Live Flagships (Doctrine v10/v11)</title>
+<style>
+  :root { --bg:#05060d; --panel:rgba(10,14,28,0.88); --acc:#7fe3ff; --txt:#dbe6ff; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--txt); }
+  #scene { position:fixed; inset:0; }
+  a { color:var(--acc); }
+  code { font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-size:11px; color:#9fd6ff; }
+
+  /* Top-left HUD */
+  #hud { position:fixed; top:14px; left:14px; z-index:10; background:var(--panel);
+    border:1px solid rgba(127,227,255,0.25); border-radius:12px; padding:12px 16px;
+    backdrop-filter:blur(8px); font-size:13px; min-width:230px; }
+  #hud h1 { font-size:13px; margin:0 0 8px; letter-spacing:1px; color:var(--acc); text-transform:uppercase; }
+  #hud .row { display:flex; justify-content:space-between; padding:2px 0; }
+  #hud .row b { color:#fff; font-variant-numeric:tabular-nums; }
+  #hud .sub { font-size:10px; opacity:0.55; margin-top:6px; }
+  #hud .big { font-size:15px; }
+  #hud .upcount { color:#33dd88; font-weight:800; }
+
+  /* Top-right controls */
+  #controls { position:fixed; top:14px; right:14px; z-index:10; background:var(--panel);
+    border:1px solid rgba(127,227,255,0.25); border-radius:12px; padding:12px 14px;
+    backdrop-filter:blur(8px); font-size:12px; width:225px; }
+  #controls h2 { font-size:11px; margin:0 0 8px; letter-spacing:1px; color:var(--acc); text-transform:uppercase; }
+  .btnrow { display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
+  button { background:#16203c; color:var(--txt); border:1px solid rgba(127,227,255,0.3);
+    border-radius:8px; padding:7px 11px; font-size:12px; cursor:pointer; transition:.15s; }
+  button:hover { background:#22325c; }
+  button.on { background:#ff5577; border-color:#ff5577; color:#fff; }
+  button.toggleon { background:#1f7a4d; border-color:#33dd88; color:#fff; }
+  #wireToggles { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
+  .toggle { display:flex; align-items:center; gap:6px; cursor:pointer; font-size:12px; }
+  .toggle input { accent-color:var(--acc); }
+  .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .dot.live { background:#33dd88; box-shadow:0 0 6px #33dd88; }
+  .dot.pend { background:#888; }
+
+  /* Flagship status panel bottom-left */
+  #flagships { position:fixed; bottom:14px; left:14px; z-index:10; background:var(--panel);
+    border:1px solid rgba(127,227,255,0.25); border-radius:12px; padding:10px 12px;
+    backdrop-filter:blur(8px); font-size:11px; width:280px; }
+  #flagships h3 { font-size:10px; margin:0 0 8px; letter-spacing:1px; opacity:.7; text-transform:uppercase;
+    display:flex; justify-content:space-between; }
+  #flagships h3 .live-tag { color:#33dd88; }
+  .flag-card { display:flex; align-items:center; gap:8px; padding:5px 6px; border-radius:7px;
+    margin-bottom:4px; background:rgba(127,227,255,0.04); border:1px solid rgba(127,227,255,0.08); }
+  .flag-card .sdot { width:11px; height:11px; border-radius:50%; flex:none; }
+  .flag-card .sdot.up { background:#33dd88; box-shadow:0 0 8px #33dd88; }
+  .flag-card .sdot.down { background:#ff3355; box-shadow:0 0 8px #ff3355; }
+  .flag-card .sdot.unknown { background:#888; }
+  .flag-card .fname { font-weight:700; min-width:54px; }
+  .flag-card .fmeta { opacity:.6; font-size:9.5px; line-height:1.3; flex:1; }
+  .flag-card .flam { font-variant-numeric:tabular-nums; opacity:.85; font-size:10px; min-width:38px; text-align:right; }
+
+  /* Organ legend (collapsible, right of flagships) */
+  #legend { position:fixed; bottom:14px; left:304px; z-index:10; background:var(--panel);
+    border:1px solid rgba(127,227,255,0.2); border-radius:12px; padding:10px 12px;
+    backdrop-filter:blur(8px); font-size:11px; max-height:40vh; overflow-y:auto; width:210px; }
+  #legend h3 { font-size:10px; margin:0 0 6px; letter-spacing:1px; opacity:.6; text-transform:uppercase; }
+  .organ-li { display:flex; align-items:center; gap:7px; padding:3px 5px; border-radius:6px; cursor:pointer; }
+  .organ-li:hover { background:rgba(127,227,255,0.08); }
+  .organ-li.active { background:rgba(127,227,255,0.18); }
+  .organ-li .sw { width:10px; height:10px; border-radius:3px; flex:none; }
+  .organ-li .nm { font-weight:600; }
+  .organ-li .en { opacity:.55; font-size:10px; }
+
+  /* Right side panel */
+  #panel { position:fixed; top:0; right:-380px; width:360px; height:100%; z-index:20;
+    background:var(--panel); border-left:1px solid rgba(127,227,255,0.3);
+    backdrop-filter:blur(12px); transition:right .3s ease; padding:54px 20px 20px; overflow-y:auto; }
+  #panel.open { right:0; }
+  #panelClose { position:absolute; top:14px; right:16px; cursor:pointer; font-size:20px; opacity:.6; }
+  .org-head { border-left:4px solid; padding-left:12px; margin-bottom:14px; }
+  .org-head .qn { display:block; font-size:24px; font-weight:800; letter-spacing:1px; }
+  .org-head .en { font-size:13px; opacity:.7; }
+  .badge { display:inline-block; color:#05060d; font-weight:700; font-size:11px;
+    padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+  .note { font-size:12px; opacity:.8; line-height:1.5; }
+  #panel h4 { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--acc); margin:16px 0 6px; }
+  ul.formulas { margin:0; padding-left:16px; }
+  ul.formulas li { margin:3px 0; }
+  .tests { font-size:11px; opacity:.75; line-height:1.5; }
+  .zen { font-size:11px; opacity:.7; } .zen.warn { color:#ffaa55; }
+  .demo-btn { display:block; margin-top:18px; text-align:center; background:#16203c;
+    border:1px solid var(--acc); border-radius:8px; padding:10px; text-decoration:none; color:var(--acc); font-weight:600; }
+  .demo-btn:hover { background:#22325c; }
+
+  /* data banner */
+  #dataBanner { display:none; position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    z-index:15; background:rgba(255,136,51,0.15); border:1px solid #ff8833; color:#ffcc99;
+    border-radius:8px; padding:7px 16px; font-size:11px; }
+  .hint { position:fixed; bottom:14px; right:14px; z-index:10; font-size:10px; opacity:.4; }
+</style>
+  <link rel="stylesheet" href="brand-tokens.css"/>
+  <link rel="stylesheet" href="brand-bridge.css"/>
+</head>
+<body>
+  <div id="scene"></div>
+
+  <div id="hud">
+    <h1>SZL Anatomy V2 · Λ Live</h1>
+    <div class="row big"><span>Flagships</span><b><span id="hudUp" class="upcount">—/6</span> UP</b></div>
+    <div class="row"><span>Clock (UTC)</span><b id="hudClock">—</b></div>
+    <div class="row"><span>Λ score</span><b id="hudLambda">—</b></div>
+    <div class="row"><span>Axes above floor</span><b id="hudAxes">—</b></div>
+    <div class="row"><span>Declarations</span><b id="hudDecl">749</b></div>
+    <div class="row"><span>Axioms</span><b id="hudAxioms">14</b></div>
+    <div class="row"><span>Sorries</span><b id="hudSorries">163</b></div>
+    <div class="row"><span>FPS</span><b id="hudFps">—</b></div>
+    <div class="sub">Doctrine v10/v11 · lutar-v18.0.0 · Λ-spine = 13 axes · uniqueness = Conjecture</div>
+  </div>
+
+  <div id="controls">
+    <h2>Controls</h2>
+    <div class="btnrow">
+      <button id="btnExplode">Explode</button>
+      <button id="btnPulse">Pulse</button>
+      <button id="btnReset">Reset view</button>
+    </div>
+    <div class="btnrow">
+      <button id="btnBody" class="toggleon">Hide body</button>
+      <button id="btnFlags" class="toggleon">Hide flagships</button>
+    </div>
+    <h2>Wires</h2>
+    <div id="wireToggles"></div>
+  </div>
+
+  <div id="flagships">
+    <h3><span>6 Flagships · Live</span><span class="live-tag" id="flagPollAge">polling…</span></h3>
+    <div id="flagList"></div>
+  </div>
+
+  <div id="legend">
+    <h3>12 Organs · click to inspect</h3>
+    <div id="organList"></div>
+  </div>
+
+  <div id="panel">
+    <div id="panelClose" onclick="document.getElementById('panel').classList.remove('open')">✕</div>
+    <div id="panelBody"></div>
+  </div>
+
+  <div id="dataBanner"></div>
+  <div class="hint">drag = orbit · scroll = zoom · click organ = inspect</div>
+
+  <script type="module" src="main.js"></script>
+  <script>
+    // build organ legend after data loads
+    fetch('assets/organs.json').then(r=>r.json()).then(d=>{
+      const el = document.getElementById('organList');
+      d.organs.forEach(o=>{
+        const div = document.createElement('div');
+        div.className='organ-li'; div.dataset.id=o.id;
+        div.innerHTML = `<span class="sw" style="background:${o.color}"></span><span class="nm">${o.quechua}</span><span class="en">${o.english}</span>`;
+        div.onclick = ()=> window.__selectOrgan && window.__selectOrgan(o.id);
+        el.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>

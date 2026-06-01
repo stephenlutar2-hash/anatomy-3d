@@ -1,0 +1,570 @@
+{
+  "_meta": {
+    "doctrine": "v11",
+    "snapshot_date": "2026-06-01",
+    "lean_ref": "lutar-v18.0.0 @ c7c0ba17",
+    "declarations": 749,
+    "axioms_unique": 14,
+    "sorries_total": 163,
+    "source": "110_ANATOMY_COMPLETENESS_AUDIT.md + live /api/a11oy/v1/honest + live flagship /healthz polls",
+    "lambda_uniqueness": "Conjecture, not a closed theorem (open CAUCHY_ND sorry Uniqueness.lean:120 + missing symmetry axiom)",
+    "note": "Lambda-spine vertebrae count = 13 (per yuyay_v3 LinkedIn truth). HONESTY: wires not shipped render gray DASHED; flagships not deployed render RED. killinchu + uds-demo are 404 (PENDING). W3C traceparent (Wire D) not distributed across Spaces.",
+    "v13_edge_organs": "ADDITIVE 2026-06-01 (Yachay): chaski(eyes), wallpa(mouth), wasi-rikuq(atop head). v13 factor obligations live OUTSIDE locked 163 (→166 once instilled). LOCKED 749/14/163 unchanged."
+  },
+  "organs": [
+    {
+      "id": "amaru",
+      "quechua": "AMARU",
+      "english": "Cortex / Reasoning",
+      "role": "brain (inside HEAD)",
+      "lean": "PROVEN",
+      "leanNote": "Substrate-quality; 7 chakra kernels + chakana wiring tested",
+      "formulas": [
+        "amaru_scheduler.py",
+        "chakra_{1..7}/kernel.py",
+        "chakana_wiring.py"
+      ],
+      "tests": "PASSING — test_chakana_wiring.py, per-chakra test_replay.py, sidecar test_app.py",
+      "demo": "https://szlholdings-amaru.hf.space/chakras",
+      "zenodo": "10.5281/zenodo.20466440",
+      "color": "#ffe14d",
+      "emissive": "#aa8800",
+      "glow": true
+    },
+    {
+      "id": "yuyay",
+      "quechua": "YUYAY",
+      "english": "Heart / Memory (conjunctive gate)",
+      "role": "heart (chest center, 13 axes ring)",
+      "lean": "PARTIAL",
+      "leanNote": "Chakra-4 9-axis AND gate shipped + hashed (bacf5443); no memory-store test",
+      "formulas": [
+        "chakra_4_heart/kernel.py (CH'ULLA-YUYAY)"
+      ],
+      "tests": "PARTIAL — gate logic shipped + hashed; no dedicated memory-store test",
+      "demo": "https://szlholdings-amaru.hf.space/brain",
+      "zenodo": "10.5281/zenodo.20466440",
+      "color": "#ff5577",
+      "emissive": "#aa1133",
+      "glow": true
+    },
+    {
+      "id": "unay",
+      "quechua": "UNAY",
+      "english": "Cross-session Memory",
+      "role": "memory (behind YUYAY)",
+      "lean": "CONJECTURE",
+      "leanNote": "No dedicated module on remote (unay|memory -> 0 hits); concept only",
+      "formulas": [
+        "(no dedicated module — continuity implied by receipt chain)"
+      ],
+      "tests": "NO TESTS — concept only",
+      "demo": "https://szlholdings-rosie.hf.space/",
+      "zenodo": null,
+      "color": "#c08cff",
+      "emissive": "#5522aa",
+      "glow": false
+    },
+    {
+      "id": "yawar",
+      "quechua": "YAWAR",
+      "english": "Blood / Ledger (circulatory)",
+      "role": "blood (TubeGeometry veins through torso/arms/legs)",
+      "lean": "PROVEN",
+      "leanNote": "DSSE-PAE signing + SHA-256 linked receipt chain; Sigstore CI signing PENDING. Yawar bus = 20-SLOC ceremonial wire from RUWAY gate.",
+      "formulas": [
+        "yawar_bus.py (20-SLOC ceremonial wire from RUWAY gate)",
+        "receipts.py (SHA-256 linked chain)",
+        "dsse-pae.ts"
+      ],
+      "tests": "PASSING — dsse-pae.test.ts, wrap_dsse.test.ts, receipt_chain_corruption.test.ts",
+      "demo": "https://szlholdings-a11oy.hf.space/governance",
+      "zenodo": "10.5281/zenodo.20451991",
+      "color": "#ff2233",
+      "emissive": "#cc0000",
+      "glow": true
+    },
+    {
+      "id": "huklla",
+      "quechua": "HUKLLA",
+      "english": "Immune / Halt-authority",
+      "role": "immune (thymus, upper chest dodecahedron)",
+      "lean": "PROVEN",
+      "leanNote": "10 pure-predicate tripwires (huklla-1..10) + deadman/halt semantics. Sentra = 18-SLOC white-blood-cell node; 4 introspection axes cross-link here.",
+      "formulas": [
+        "huklla.py",
+        "HUKLLA_10_TRIPWIRES.md",
+        "huklla-t11 doi-title-gate",
+        "sentra immune_server.py (18-SLOC)"
+      ],
+      "tests": "PASSING — sidecar test_app.py asserts huklla-1..10 ids",
+      "demo": "https://szlholdings-amaru.hf.space/brain",
+      "zenodo": "10.5281/zenodo.20466440",
+      "color": "#33ddaa",
+      "emissive": "#11885f",
+      "glow": false
+    },
+    {
+      "id": "kallpa",
+      "quechua": "KALLPA",
+      "english": "Wires / Interconnect",
+      "role": "wires (bright lines connecting organs INSIDE body)",
+      "lean": "PARTIAL",
+      "leanNote": "Wire B LIVE (a11oy<->sentra); Wire C LIVE (a11oy<->rosie); Wire D NOT YET IMPLEMENTED (W3C traceparent)",
+      "formulas": [
+        "immune_server.py (Wire B)",
+        "events.ts (Wire C)",
+        "wire_d_a11oy_policy.test.ts"
+      ],
+      "tests": "PARTIAL — Wire B/C live on main; Wire D pending",
+      "demo": "https://szlholdings-a11oy.hf.space/mesh",
+      "zenodo": "10.5281/zenodo.20466435",
+      "color": "#ffd23f",
+      "emissive": "#aa8800",
+      "glow": true
+    },
+    {
+      "id": "khipu",
+      "quechua": "KHIPU",
+      "english": "DAG / Merkle Ledger",
+      "role": "DAG (TorusKnot hanging from spine)",
+      "lean": "PROVEN",
+      "leanNote": "Summation-invariant Merkle DAG; TH11 SummationInvariant.lean PROVEN",
+      "formulas": [
+        "khipu-receipt.ts",
+        "khipu-positional.ts",
+        "summationInvariant.ts"
+      ],
+      "tests": "PASSING — khipu-receipt.test.ts (TH11 fail-mode + dual-attestation)",
+      "demo": "https://szlholdings-rosie.hf.space/",
+      "zenodo": "10.5281/zenodo.20451997",
+      "color": "#ffaa44",
+      "emissive": "#cc7711",
+      "glow": true
+    },
+    {
+      "id": "lambda",
+      "quechua": "LAMBDA SPINE",
+      "english": "Skeleton / Λ Aggregator (13 axes)",
+      "role": "spine (13 stacked vertebrae neck->hips)",
+      "lean": "PROVEN",
+      "leanNote": "Λ bounds/composability/replay/Merkle/DPI/doctrine PROVEN. Λ uniqueness = CONJECTURE (Uniqueness.lean:120 sorry). 13 vertebrae: 2 gold sacred @ 0.95 + 7 silver structural @ 0.90 + 4 red introspection cross-linked to HUKLLA.",
+      "formulas": [
+        "lambda-gate/src/gate.ts",
+        "Bound.lean",
+        "TH1_Composition.lean",
+        "K10v2_ReplayRoot.lean"
+      ],
+      "tests": "PASSING (with caveats) — gate.test.ts, knot-tag.test.ts; lutar_unique has 1 sorry",
+      "demo": "https://szlholdings-a11oy.hf.space/lambda",
+      "zenodo": "10.5281/zenodo.20162352",
+      "color": "#ffffff",
+      "emissive": "#88aaff",
+      "glow": true,
+      "axes": 13
+    },
+    {
+      "id": "otel",
+      "quechua": "OTel VSP",
+      "english": "Nervous System",
+      "role": "nervous (branching tree from spine to limbs)",
+      "lean": "PARTIAL",
+      "leanNote": "Code-complete + tested; NO Zenodo SW deposit (provenance gap)",
+      "formulas": [
+        "exporter.ts (W3C TraceContext)",
+        "pipeline/*.ts",
+        "redaction/*.ts",
+        "sla/*.ts"
+      ],
+      "tests": "PASSING — exporter.test.ts, dpi_soundness.test.ts, relay_latency.test.ts",
+      "demo": "https://szlholdings-a11oy.hf.space/mesh",
+      "zenodo": null,
+      "color": "#66ffcc",
+      "emissive": "#229977",
+      "glow": false
+    },
+    {
+      "id": "kanchay",
+      "quechua": "KANCHAY",
+      "english": "Brand Projection",
+      "role": "halo (outer halo sphere around body)",
+      "lean": "CONJECTURE",
+      "leanNote": "No dedicated organ module; a11oy SPA is de-facto brand front (naming concept)",
+      "formulas": [
+        "(no dedicated module — a11oy/web/src/data/brands.ts near-hit)"
+      ],
+      "tests": "NO TESTS — presentation surface",
+      "demo": "https://szlholdings-a11oy.hf.space/",
+      "zenodo": null,
+      "color": "#ffe9a8",
+      "emissive": "#caa84a",
+      "glow": false
+    },
+    {
+      "id": "hatun",
+      "quechua": "HATUN",
+      "english": "Doctrine",
+      "role": "doctrine (encompassing wireframe sphere)",
+      "lean": "PROVEN",
+      "leanNote": "Doctrine soundness CrossComponentInvariant.lean PROVEN; 46 _gate.ts policy modules",
+      "formulas": [
+        "hatun-doctrine-spec/schemas/*.json",
+        "hatunDoctrine.ts",
+        "CrossComponentInvariant.lean"
+      ],
+      "tests": "PASSING — doctrine_cross_invariant PROVEN; 46 _gate.ts policy modules",
+      "demo": "https://szlholdings-a11oy.hf.space/frontier/hatun-willay",
+      "zenodo": "10.5281/zenodo.20174600",
+      "color": "#a8c8ff",
+      "emissive": "#3355aa",
+      "glow": false
+    },
+    {
+      "id": "sumaq",
+      "quechua": "SUMAQ RIKUQ",
+      "english": "Graphic Designer",
+      "role": "designer (atmospheric particles around body)",
+      "lean": "PROVEN",
+      "leanNote": "Design subsystem (build-reproducible); not a runtime organ",
+      "formulas": [
+        "design-system/tokens.css",
+        "build_anatomy_*.py (7 organ figure builders)"
+      ],
+      "tests": "PASSING (build-reproducible) — figures.sha256 pins outputs",
+      "demo": "https://szlholdings-a11oy.hf.space/",
+      "zenodo": "10.5281/zenodo.20436556",
+      "color": "#ff9ed8",
+      "emissive": "#bb5599",
+      "glow": false
+    },
+    {
+      "id": "chaski",
+      "quechua": "CHASKI",
+      "english": "Reception / Onboarding",
+      "role": "edge organ (eyes/face) — first-touch relay",
+      "lean": "SORRY",
+      "leanNote": "PuriqFormulaLean.lean §9.1 chaskiFactor — sorry-tagged",
+      "formulas": [
+        "szl_chaski.py",
+        "Chaski(a)=exp(-kappa*backpressure)*1[routable] in [0,1] (SF-13, INV-5)"
+      ],
+      "tests": "LIVE — /api/a11oy/chaski/{welcome,onboard/start,onboard/step,quickstart,heatmap} all 200",
+      "demo": "https://szlholdings-a11oy.hf.space/chaski",
+      "color": "#33e1ff",
+      "emissive": "#0a8fb0",
+      "glow": true,
+      "doctrine": "v13 ADDITIVE"
+    },
+    {
+      "id": "wallpa",
+      "quechua": "WALLPA",
+      "english": "Voice / Expression (OSS-TTS)",
+      "role": "edge organ (mouth/throat) — governed voice",
+      "lean": "SORRY",
+      "leanNote": "PuriqFormulaLean.lean §9.2 wallpaFactor — sorry-tagged",
+      "formulas": [
+        "szl_wallpa.py",
+        "Wallpa(a)=1[render⊑sanctioned]*(1-drift_out) in [0,1] (SF-14, INV-6)"
+      ],
+      "tests": "LIVE — /api/a11oy/wallpa/{voices,speak,speak/stream,narrate-doctrine}; real 16kHz WAV; 6 synthetic timbres",
+      "demo": "https://szlholdings-a11oy.hf.space/wallpa",
+      "color": "#b07cff",
+      "emissive": "#5a2aa0",
+      "glow": true,
+      "doctrine": "v13 ADDITIVE"
+    },
+    {
+      "id": "wasi-rikuq",
+      "quechua": "WASI-RIKUQ",
+      "english": "House-Watcher / Observability",
+      "role": "edge organ (atop head) — advisory single-pane watcher",
+      "lean": "SORRY",
+      "leanNote": "PuriqFormulaLean.lean §9.3 wasiFactor — sorry-tagged",
+      "formulas": [
+        "szl_wasi_rikuq.py",
+        "Wasi(a)=(prod_o health_o)*1[budget intact] in [0,1] (SF-15, INV-7)"
+      ],
+      "tests": "LIVE — /api/a11oy/wasi-rikuq/{dashboard,incidents,runbook,chaos,health-of-the-empire}; polls 5 flagship /healthz; 2-person Yuyay chaos gate; HUKLLA sole halt",
+      "demo": "https://szlholdings-a11oy.hf.space/wasi-rikuq",
+      "color": "#ffcb3d",
+      "emissive": "#aa7a00",
+      "glow": true,
+      "doctrine": "v13 ADDITIVE"
+    }
+  ],
+  "wires": [
+    {
+      "id": "B",
+      "label": "Wire B — a11oy↔sentra immune",
+      "status": "LIVE",
+      "from": "huklla",
+      "to": "amaru",
+      "color": "#33dd88",
+      "note": "green pulse — immune mesh live (sentra /healthz ok)"
+    },
+    {
+      "id": "C",
+      "label": "Wire C — a11oy↔rosie receipt/memory stream",
+      "status": "LIVE",
+      "from": "yawar",
+      "to": "unay",
+      "color": "#33ddff",
+      "note": "cyan pulse — rosie receipt stream live"
+    },
+    {
+      "id": "D",
+      "label": "Wire D — W3C traceparent across mesh",
+      "status": "PENDING",
+      "from": "otel",
+      "to": "lambda",
+      "color": "#ffd23f",
+      "note": "yellow if live; gray DASHED — distributed traceparent broker NOT wired"
+    },
+    {
+      "id": "E",
+      "label": "Wire E — a11oy↔amaru cortex",
+      "status": "LIVE",
+      "from": "hatun",
+      "to": "amaru",
+      "color": "#5599ff",
+      "note": "blue — cortex SSE bus (amaru /healthz ok)"
+    },
+    {
+      "id": "F",
+      "label": "Wire F — a11oy↔vessels khipu",
+      "status": "LIVE",
+      "from": "kanchay",
+      "to": "khipu",
+      "color": "#ff3344",
+      "note": "red — vessels receipts (vessels /healthz ok)"
+    },
+    {
+      "id": "G",
+      "label": "Wire G — brain-jack mesh",
+      "status": "PENDING",
+      "from": "yuyay",
+      "to": "otel",
+      "color": "#aa55ff",
+      "note": "purple if live; gray DASHED — distributed brain-jack broker in-process only"
+    },
+    {
+      "id": "H",
+      "label": "Wire H — lean-kernel backplane",
+      "status": "PENDING",
+      "from": "lambda",
+      "to": "khipu",
+      "color": "#ffcc33",
+      "note": "gold if live; gray DASHED — lean-kernel Space proof backplane pending"
+    },
+    {
+      "id": "I",
+      "label": "Wire I — amaru↔chaski reception",
+      "status": "LIVE",
+      "from": "amaru",
+      "to": "chaski",
+      "color": "#33e1ff",
+      "note": "edge reception relay (CHASKI /welcome 200, Khipu chained)"
+    },
+    {
+      "id": "J",
+      "label": "Wire J — amaru↔wallpa expression",
+      "status": "LIVE",
+      "from": "amaru",
+      "to": "wallpa",
+      "color": "#b07cff",
+      "note": "governed voice render (WALLPA /speak 200, real WAV, OSS-TTS only)"
+    },
+    {
+      "id": "K",
+      "label": "Wire K — wasi-rikuq↔khipu watch",
+      "status": "LIVE",
+      "from": "wasi-rikuq",
+      "to": "khipu",
+      "color": "#ffcb3d",
+      "note": "house-watch consumes Khipu DAG depths of all 3 edge organs (advisory; HUKLLA sole halt)"
+    }
+  ],
+  "flagships": [
+    {
+      "name": "a11oy",
+      "role": "gate orchestration",
+      "pos": [
+        14,
+        12,
+        2
+      ],
+      "color": "#ffe14d",
+      "link": "kanchay",
+      "note": "top right"
+    },
+    {
+      "name": "amaru",
+      "role": "cortex",
+      "pos": [
+        0,
+        17,
+        -2
+      ],
+      "color": "#7fe3ff",
+      "link": "amaru",
+      "note": "top"
+    },
+    {
+      "name": "sentra",
+      "role": "immune",
+      "pos": [
+        -15,
+        8,
+        2
+      ],
+      "color": "#33ddaa",
+      "link": "huklla",
+      "note": "left"
+    },
+    {
+      "name": "vessels",
+      "role": "receipts",
+      "pos": [
+        13,
+        -4,
+        3
+      ],
+      "color": "#ffaa44",
+      "link": "khipu",
+      "note": "bottom right"
+    },
+    {
+      "name": "killinchu",
+      "role": "drone intelligence (NEW)",
+      "pos": [
+        -13,
+        -4,
+        3
+      ],
+      "color": "#ff7a59",
+      "link": "otel",
+      "note": "bottom left — NOT deployed yet (404 PENDING)"
+    },
+    {
+      "name": "rosie",
+      "role": "memory",
+      "pos": [
+        0,
+        6,
+        -15
+      ],
+      "color": "#c08cff",
+      "link": "unay",
+      "note": "back"
+    }
+  ],
+  "flagshipOrganLink": {
+    "a11oy": "kanchay",
+    "amaru": "amaru",
+    "sentra": "huklla",
+    "vessels": "khipu",
+    "killinchu": "otel",
+    "rosie": "unay"
+  },
+  "lambdaAxes": [
+    {
+      "name": "moralGrounding",
+      "score": 0.96,
+      "class": "sacred",
+      "floor": 0.95
+    },
+    {
+      "name": "measurabilityHonesty",
+      "score": 0.95,
+      "class": "sacred",
+      "floor": 0.95
+    },
+    {
+      "name": "Calibration",
+      "score": 0.91,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Robustness",
+      "score": 0.9,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Privacy",
+      "score": 0.92,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Safety",
+      "score": 0.93,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Provenance",
+      "score": 0.9,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Compliance",
+      "score": 0.91,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "Reproducibility",
+      "score": 0.92,
+      "class": "structural",
+      "floor": 0.9
+    },
+    {
+      "name": "selfModelFidelity",
+      "score": 0.86,
+      "class": "introspection",
+      "floor": 0.8,
+      "hukllaTripwire": "huklla-3"
+    },
+    {
+      "name": "uncertaintyAwareness",
+      "score": 0.84,
+      "class": "introspection",
+      "floor": 0.8,
+      "hukllaTripwire": "huklla-5"
+    },
+    {
+      "name": "deceptionDetection",
+      "score": 0.88,
+      "class": "introspection",
+      "floor": 0.8,
+      "hukllaTripwire": "huklla-7"
+    },
+    {
+      "name": "valueDriftMonitor",
+      "score": 0.85,
+      "class": "introspection",
+      "floor": 0.8,
+      "hukllaTripwire": "huklla-9"
+    }
+  ],
+  "axisClasses": {
+    "sacred": {
+      "color": "#ffd23f",
+      "label": "Sacred (gold) — floor 0.95",
+      "count": 2
+    },
+    "structural": {
+      "color": "#c8d2e0",
+      "label": "Structural (silver) — floor 0.90",
+      "count": 7
+    },
+    "introspection": {
+      "color": "#ff3355",
+      "label": "Introspection (red, HUKLLA-linked) — floor 0.80",
+      "count": 4
+    }
+  }
+}
